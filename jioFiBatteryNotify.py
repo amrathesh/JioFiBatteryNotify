@@ -50,6 +50,12 @@ if __name__ == "__main__":
                soup = BeautifulSoup(r.content, 'html5lib') 
                batterySample = str(soup.find_all(id="batterylevel"))
                batteryVal = int(batterySample[47:49])
+               is100 = (batterySample[47:50])
+
+               #if battery fully charged
+               if is100 == "100":
+                    batteryVal = 100
+               
                if(batteryVal <= notifyAt):
                     for i in range(3):
                          notify(batteryVal)

@@ -5,6 +5,6 @@
 * Toast notification when battery reaches given value.
 * Will be always showing current battery value in terminal.
 ### Contributing
-* Can add additional features like notify data usages or cool GUI with battery indicator, data rates etc. 
+* Can add additional features like notify data usages or a GUI with battery indicator, data rates etc. 
 
 Pull requests are welcome.

@@ -49,12 +49,14 @@ if __name__ == "__main__":
                r = requests.get(URL) 
                soup = BeautifulSoup(r.content, 'html5lib') 
                batterySample = str(soup.find_all(id="batterylevel"))
-               batteryVal = int(batterySample[47:49])
-               is100 = (batterySample[47:50])
-
                #if battery fully charged
-               if is100 == "100":
+               if batterySample[47:50] == "100":
                     batteryVal = 100
+               #if single digit
+               elif (batterySample[48:49]) == "%":
+                    batteryVal = int(batterySample[47:48])
+               else:
+                    batteryVal = int(batterySample[47:49])
                
                if(batteryVal <= notifyAt):
                     for i in range(3):
@@ -70,8 +72,5 @@ if __name__ == "__main__":
                          print(" "*28,end="\r")
                          time.sleep(1)
                     
-          except:
+          except :
                exitcall()
-               
-
-
